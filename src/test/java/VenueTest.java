@@ -35,6 +35,4 @@ public class VenueTest {
     Venue savedVenue = Venue.all().get(0);
     assertEquals(myVenue.getId(), savedVenue.getId());
   }
-
-
 }
