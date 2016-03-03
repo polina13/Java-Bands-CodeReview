@@ -19,13 +19,13 @@ public class BandTest {
     Band secondBand = new Band("Band1");
     assertTrue(firstBand.equals(secondBand));
   }
-//
-//   @Test
-//   public void save_savesIntoDatabase_true() {
-//     Band myBand = new Band("Band1");
-//     myBand.save();
-//     assertTrue(Band.all().get(0).equals(myBand));
-//   }
+
+  @Test
+  public void save_savesBandsIntoDatabase_true() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+    assertTrue(Band.all().get(0).equals(myBand));
+  }
 //
 //   @Test
 //   public void find_findBandInDatabase_true() {
