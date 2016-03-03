@@ -19,6 +19,7 @@ public class VenueTest {
     Venue secondVenue = new Venue("venue1");
     assertTrue(firstVenue.equals(secondVenue));
   }
+
   @Test
   public void save_savesObjectIntoDatabase() {
     Venue myVenue = new Venue("venue1");
@@ -34,4 +35,6 @@ public class VenueTest {
     Venue savedVenue = Venue.all().get(0);
     assertEquals(myVenue.getId(), savedVenue.getId());
   }
+
+
 }

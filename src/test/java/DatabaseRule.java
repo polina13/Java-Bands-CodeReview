@@ -17,6 +17,4 @@ public class DatabaseRule extends ExternalResource {
        con.createQuery(deleteBandsPlayedQuery).executeUpdate();
      }
    }
-
-
 }
