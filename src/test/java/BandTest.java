@@ -35,31 +35,31 @@ public class BandTest {
     assertTrue(myBand.equals(savedBand));
   }
 //
-//   @Test
-//   public void addTask_addsTaskToBand() {
-//     Band myBand = new Band("Band1");
-//     myBand.save();
-//
-//     Venue myVenue = new Venue("Mow the lawn", false);
-//     myVenue.save();
-//
-//     myBand.addVenue(myVenue);
-//     Venue savedVenue = myBand.getVenues().get(0);
-//     assertTrue(myVenue.equals(savedVenue));
-// }
-//
-//   @Test
-//   public void getVenues_returnsAllVenues_ArrayList() {
-//     Band myBand = new Band("Band1");
-//     myBand.save();
-//
-//     Venue myVenue = new Venue("Mow the lawn", false);
-//     myVenue.save();
-//
-//     myBand.addVenue(myVenue);
-//     List savedVenues = myBand.getVenues();
-//     assertEquals(savedVenues.size(), 1);
-// }
+  @Test
+  public void addVenue_addsVenueToBand() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+
+    Venue myVenue = new Venue("venue 1");
+    myVenue.save();
+
+    myBand.addVenue(myVenue);
+    Venue savedVenue = myBand.getVenues().get(0);
+    assertTrue(myVenue.equals(savedVenue));
+}
+
+  @Test
+  public void getVenues_returnsAllVenues_ArrayList() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+
+    Venue myVenue = new Venue("Mow the lawn", false);
+    myVenue.save();
+
+    myBand.addVenue(myVenue);
+    List savedVenues = myBand.getVenues();
+    assertEquals(savedVenues.size(), 1);
+}
 //
 //   @Test
 //   public void delete_deletesAllVenuesAndListsAssoicationes() {
@@ -79,11 +79,11 @@ public class BandTest {
   // public void getVenues_retrievesALlVenuesFromDatabase_VenuesList() {
   //   Band myBand = new Band("Band1");
   //   myBand.save();
-  //   Venue firstTask = new Task("Mow the lawn", myBand.getId());
-  //   firstTask.save();
-  //   Task secondTask = new Task("Do the dishes", myBand.getId());
-  //   secondTask.save();
-  //   Task[] tasks = new Task[] { firstTask, secondTask };
-  //   assertTrue(myBand.getTasks().containsAll(Arrays.asList(tasks)));
+  //   Venue firstVenue = new Venue("Mow the lawn", myBand.getId());
+  //   firstVenue.save();
+  //   Venue secondVenue = new Venue("Do the dishes", myBand.getId());
+  //   secondVenue.save();
+  //   Venue[] Venues = new Venue[] { firstVenue, secondVenue };
+  //   assertTrue(myBand.getVenues().containsAll(Arrays.asList(Venues)));
   // }
 }
