@@ -26,14 +26,14 @@ public class BandTest {
     myBand.save();
     assertTrue(Band.all().get(0).equals(myBand));
   }
-//
-//   @Test
-//   public void find_findBandInDatabase_true() {
-//     Band myBand = new Band("Band1");
-//     myBand.save();
-//     Band savedBand = Band.find(myBand.getId());
-//     assertTrue(myBand.equals(savedBand));
-//   }
+
+  @Test
+  public void find_findBandInDatabase_true() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+    Band savedBand = Band.find(myBand.getId());
+    assertTrue(myBand.equals(savedBand));
+  }
 //
 //   @Test
 //   public void addTask_addsTaskToBand() {
