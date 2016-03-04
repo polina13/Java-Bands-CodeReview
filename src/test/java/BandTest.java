@@ -46,7 +46,7 @@ public class BandTest {
     myBand.addVenue(myVenue);
     Venue savedVenue = myBand.getVenues().get(0);
     assertTrue(myVenue.equals(savedVenue));
-}
+  }
 
   @Test
   public void getVenues_returnsAllVenues_ArrayList() {
@@ -59,31 +59,18 @@ public class BandTest {
     myBand.addVenue(myVenue);
     List savedVenues = myBand.getVenues();
     assertEquals(savedVenues.size(), 1);
-}
-//
-//   @Test
-//   public void delete_deletesAllVenuesAndListsAssoicationes() {
-//     Band myBand = new Band("Band1");
-//     myBand.save();
-//
-//     Venue myVenue = new Venue("Mow the lawn", false);
-//     myVenue.save();
-//
-//     myBand.addVenue(myVenue);
-//     myBand.delete();
-//     assertEquals(myVenue.getCategories().size(), 0);
-// }
+  }
 
 
   // @Test
   // public void getVenues_retrievesALlVenuesFromDatabase_VenuesList() {
   //   Band myBand = new Band("Band1");
   //   myBand.save();
-  //   Venue firstVenue = new Venue("Mow the lawn", myBand.getId());
+  //   Venue firstVenue = new Venue("venue1", myBand.getId());
   //   firstVenue.save();
-  //   Venue secondVenue = new Venue("Do the dishes", myBand.getId());
+  //   Venue secondVenue = new Venue("venue2", myBand.getId());
   //   secondVenue.save();
-  //   Venue[] Venues = new Venue[] { firstVenue, secondVenue };
-  //   assertTrue(myBand.getVenues().containsAll(Arrays.asList(Venues)));
+  //   Venue[] venues = new Venue[] { firstVenue, secondVenue };
+  //   assertTrue(myBand.getVenues().containsAll(Arrays.asList(venues)));
   // }
 }
