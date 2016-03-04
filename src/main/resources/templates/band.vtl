@@ -1,17 +1,17 @@
 band.vtl
 
 
-<h4>Add a venue to this band:</h4>
+<h4>Add a venue to $band.getName():</h4>
 
-<form action="/bands/$band.getId()/add_venues" method='post'>
+<form action="/band/$band.getId()" method='post'>
     <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
     <label for="venue_id">Select a venue</label>
-    <select id='venue_id' name='venue_id' type='text'>
+    <select required id='venue_id' name='venue_id' type='text'>
       #foreach($venue in $allVenues)
         <option value="$venue.getId()"> $venue.getName() </option>
       #end
     </select>
-    <button type='submit'>Add venue</button>
+    <button id="add-band" type='submit'>Add Venue</button>
 </form>
 
 <br>
@@ -24,12 +24,11 @@ band.vtl
   </ul>
 #end
 
-
-<form action="/bands/deleteband" method="post">
-  <input id="delete-band" class="form-control" name="delete-band" type="hidden" value="$band.getId()">
-  <label for="band-delete-btn">Delete the $band.getName() from the database.</label>
-  <button type="submit" class="btn btn-success deletebtn">Delete Band</button>
+<form action="/band/deleteband/$band.getId()" method="post">
+  <button id="delete-band" type="submit" class="btn btn-danger">Delete $band.getName()</button>
 </form>
 
+<br>
 
+<h3><a class="btn btn-success" href='/edit/$band.getId()'>Update Band</a></p>
 <h3><a class="btn btn-info" href='/'>Home Page</a></p>
