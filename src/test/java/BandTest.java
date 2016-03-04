@@ -69,4 +69,13 @@ public class BandTest {
     myBand.delete();
     assertEquals(Band.all().size(), 0);
   }
+
+  @Test
+  public void update_updatesAllBandsAndListsAssoicationes() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+
+    myBand.update("Band2");
+    assertEquals("Band2", myBand.getName());
+  }
 }

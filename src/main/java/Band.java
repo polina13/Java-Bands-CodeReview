@@ -103,13 +103,14 @@ public class Band {
 }
 
 
-  // public void update(String description) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "UPDATE tasks SET description = :description WHERE id = :id";
-  //     con.createQuery(sql)
-  //     .addParameter("description", description)
-  //     .addParameter("id", id)
-  //     .executeUpdate();
-  //   }
-  // }
+  public void update(String name) {
+    this.name = name;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE bands SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+      .addParameter("name", name)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
 }
