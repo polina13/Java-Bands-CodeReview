@@ -35,4 +35,15 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/bands");
     assertThat(pageSource()).contains("Band1");
   }
+
+  @Test
+  public void displaysAllVenuesOnceAdded() {
+    Band newBand = new Band("Band1");
+    newBand.save();
+    Venue firstVenue = new Venue("venue1");
+    firstVenue.save();
+    String bandPath = String.format("http://localhost:4567/band/%d", newBand.getId());
+    goTo(bandPath);
+    assertThat(pageSource()).contains("venue1");
+  }
 }
