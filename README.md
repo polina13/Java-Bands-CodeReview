@@ -1,14 +1,28 @@
 # Java/Spark/Velocity File Structure Template
 
-#### 02-22-2016
+#### 03-04-2016
 
-#### By Matt Rosanio and Polina Nenchev
+#### By Polina Nenchev
 
 ## Description
 
-This is a template file structure for use in Epicodus Java/Spark/Velocity projects.
+This is a band app that has an index page which has buttons for adding band/venue. Once the band is added, the user will be able to add venues. The app also will allow the user to  update and delete bands.
 
 [Here is a helpful list of Spark routes.] (https://dl.dropboxusercontent.com/s/gle8iwtk2ed9tg6/Screenshot%202015-07-23%2011.18.30.png)
+
+## Set up
+
+Clone this repository:
+
+Open terminal and run Postgres:
+
+$ postgres
+
+Open a new tab in terminal and create the 'band_venues' databased:
+
+$ psql
+$ CREATE DATABASE band_venues;
+$ psql band_venues < band_venues.sql
 
 ## How To Use
 
