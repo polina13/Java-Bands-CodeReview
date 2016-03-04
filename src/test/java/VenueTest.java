@@ -48,4 +48,17 @@ public class VenueTest {
     List savedBands = myVenue.getBands();
     assertEquals(savedBands.size(), 1);
   }
+
+  @Test
+  public void getBands_returnsAllBands_ArrayList() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+
+    Venue myVenue = new Venue("venue1");
+    myVenue.save();
+
+    myVenue.addBand(myBand);
+    List savedBands = myVenue.getBands();
+    assertEquals(savedBands.size(), 1);
+  }
 }
