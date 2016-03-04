@@ -55,4 +55,14 @@ public class AppTest extends FluentTest {
     goTo(bandPath);
     assertThat(pageSource()).contains("venue1");
   }
+
+  @Test
+  public void update_updateBandInDatabase() {
+    Band newBand = new Band("Band1");
+    newBand.save();
+    newBand.update("Band2");
+    String bandPath = String.format("http://localhost:4567/band/%d", newBand.getId());
+    goTo(bandPath);
+    assertThat(pageSource()).contains("Band2");
+  }
 }
