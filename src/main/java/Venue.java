@@ -31,7 +31,7 @@ public class Venue {
     Venue venue = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Venue.class);
-    return task;
+    return venue;
     }
 }
 
