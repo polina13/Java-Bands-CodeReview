@@ -61,16 +61,12 @@ public class BandTest {
     assertEquals(savedVenues.size(), 1);
   }
 
+  @Test
+  public void delete_deletesAllBandsAndListsAssoicationes() {
+    Band myBand = new Band("Band1");
+    myBand.save();
 
-  // @Test
-  // public void getVenues_retrievesALlVenuesFromDatabase_VenuesList() {
-  //   Band myBand = new Band("Band1");
-  //   myBand.save();
-  //   Venue firstVenue = new Venue("venue1", myBand.getId());
-  //   firstVenue.save();
-  //   Venue secondVenue = new Venue("venue2", myBand.getId());
-  //   secondVenue.save();
-  //   Venue[] venues = new Venue[] { firstVenue, secondVenue };
-  //   assertTrue(myBand.getVenues().containsAll(Arrays.asList(venues)));
-  // }
+    myBand.delete();
+    assertEquals(Band.all().size(), 0);
+  }
 }

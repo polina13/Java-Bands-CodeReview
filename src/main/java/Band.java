@@ -88,19 +88,19 @@ public class Band {
     }
 
 
-//   public void delete() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String deleteQuery = "DELETE FROM tasks WHERE id = :id;";
-//         con.createQuery(deleteQuery)
-//           .addParameter("id", id)
-//           .executeUpdate();
-//
-//       String joinDeleteQuery = "DELETE FROM categories_tasks WHERE task_id = :taskId";
-//         con.createQuery(joinDeleteQuery)
-//           .addParameter("taskId", this.getId())
-//           .executeUpdate();
-//   }
-// }
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM bands WHERE id = :id;";
+        con.createQuery(deleteQuery)
+          .addParameter("id", id)
+          .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM bands_played WHERE band_id = :bandId";
+        con.createQuery(joinDeleteQuery)
+          .addParameter("bandId", this.getId())
+          .executeUpdate();
+  }
+}
 
 
   // public void update(String description) {
