@@ -26,4 +26,13 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Welcome To The Band Site");
   }
+
+  @Test
+  public void bandIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    Band myBand = new Band("Band1");
+    myBand.save();
+    goTo("http://localhost:4567/bands");
+    assertThat(pageSource()).contains("Band1");
+  }
 }
