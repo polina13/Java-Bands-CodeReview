@@ -3,7 +3,7 @@ band.vtl
 <h1>$band.getName()</h1>
 
 #if($band.getVenues())
-  <p>Here are the venues for this band:</p>
+  <p>Here are the venues $band.getName() played:</p>
   <ul>
     #foreach($venue in $band.getVenues())
       <li>$venue.getName()</li>
@@ -13,10 +13,10 @@ band.vtl
 
 <h4>Add a venue to this band:</h4>
 
-<form action='/add_venues' method='post'>
+<form action="/bands/$band.getId()/add_venues" method='post'>
     <input id="band_id" name="band_id" type="hidden" value="$band.getId()">
     <label for="venue_id">Select a venue</label>
-    <select id='venue_id' name='venue_id' type='text'>
+    <select id="venue_id" name="venue_id" type="text">
       #foreach($venue in $allVenues)
         <option value="$venue.getId()"> $venue.getName() </option>
       #end
@@ -26,3 +26,15 @@ band.vtl
 
 <p><a href="/bands/$band.getId()/edit">Edit this band</a></p>
 <p><a class="btn btn-info" href='/'>Home</a></p>
+
+
+<!-- 
+<form action="/bands/deleteband" method="post">
+     <div class="form-group">
+       <input id="band-id" class="form-control" name="band-id" type="hidden" value="$band.getId()">
+       <label for="band-delete-btn">Delete the $band.getName() from the database.</label>
+       <button type="submit" class="btn btn-danger deletebtn">Delete</button>
+     </div>
+   </form>
+ </div>
+</div> -->

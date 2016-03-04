@@ -3,9 +3,9 @@ venue.vtl
 <h1>$venue.getName()</h1>
 
 #if($venue.getBands())
-  <p>Here are the bands this venue:</p>
+  <p>Here are the bands played $venue.getName()</p>
   <ul>
-    #foreach($category in $venue.getBands())
+    #foreach($band in $venue.getBands())
       <li>$band.getName()</li>
     #end
   </ul>

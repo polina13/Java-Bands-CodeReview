@@ -2,6 +2,12 @@ venues.vtl
 
 <h1>Venue list!</h1>
 
+<br>
+
+#foreach ($venue in $venues)
+  <li><a class="btn btn-primary" href="/venues/$venue.getId()">$venue.getName()</a></li><br>
+#end
+
 <h3>Add a new venue:</h3>
 
 <form action="/venues" method="post">
@@ -10,9 +16,5 @@ venues.vtl
 
   <button class="btn btn-default" type="submit">Add venue</button>
 </form>
-
-#foreach ($task in $tasks)
-  <li><a class="btn btn-primary" href="/tasks/$task.getId()">$task.getName()</a></li><br>
-#end
 
 <p><a class="btn btn-info" href='/'>Home</a></p>

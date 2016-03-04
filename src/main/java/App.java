@@ -1,8 +1,11 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+
 
 
 public class App {
@@ -24,6 +27,26 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+
+    post("/bands", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      Band band = new Band(name);
+      band.save();
+      response.redirect("/bands");
+      return null;
+    });
+
+    get("/bands/:id", (request,response) ->{
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Band band = Band.find(id);
+      model.put("band", band);
+      model.put("allVenues", Venue.all());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/venues", (request, response) -> {
       HashMap<String, Object>model = new HashMap<String, Object>();
       List<Venue> venues = Venue.all();
@@ -42,15 +65,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/bands/:id", (request,response) ->{
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      int id = Integer.parseInt(request.params("id"));
-      Band band = Band.find(id);
-      model.put("band", band);
-      model.put("allVenues", Venue.all());
-      model.put("template", "templates/band.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
 
     post("/venues", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -62,14 +76,6 @@ public class App {
     });
 
 
-    post("/bands", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      String name = request.queryParams("name");
-      Band newBand = new Band(name);
-      newBand.save();
-      response.redirect("/bands");
-      return null;
-    });
 
     post("/add_venues", (request, response) -> {
       int venueId = Integer.parseInt(request.queryParams("venue_id"));
