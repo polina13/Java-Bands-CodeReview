@@ -1,5 +1,4 @@
-# Java/Spark/Velocity File Structure Template
-
+# Welcome to the Band Site
 #### 03-04-2016
 
 #### By Polina Nenchev
