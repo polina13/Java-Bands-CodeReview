@@ -16,13 +16,13 @@ Clone this repository:
 
 Open terminal and run Postgres:
 
-$ postgres
+* $ postgres
 
 Open a new tab in terminal and create the 'band_venues' databased:
 
-$ psql
-$ CREATE DATABASE band_venues;
-$ psql band_venues < band_venues.sql
+* $ psql
+* $ CREATE DATABASE band_venues;
+* $ psql band_venues < band_venues.sql
 
 ## How To Use
 
