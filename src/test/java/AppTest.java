@@ -37,6 +37,15 @@ public class AppTest extends FluentTest {
   }
 
   @Test
+  public void venueIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    Venue myVenue = new Venue ("venue1");
+    myVenue.save();
+    goTo("http://localhost:4567/venues");
+    assertThat(pageSource()).contains("venue1");
+  }
+
+  @Test
   public void displaysAllVenuesOnceAdded() {
     Band newBand = new Band("Band1");
     newBand.save();
