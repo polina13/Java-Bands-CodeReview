@@ -1,8 +1,6 @@
 band.vtl
 
 
-<h1>$band.getName()</h1>
-
 <h4>Add a venue to this band:</h4>
 
 <form action="/bands/$band.getId()/add_venues" method='post'>
@@ -26,18 +24,12 @@ band.vtl
   </ul>
 #end
 
-<!--
-<p><a href="/bands/$band.getId()/edit">Edit this band</a></p>
-<p><a class="btn btn-info" href='/'>Home</a></p> -->
 
-
-<!--
 <form action="/bands/deleteband" method="post">
-     <div class="form-group">
-       <input id="band-id" class="form-control" name="band-id" type="hidden" value="$band.getId()">
-       <label for="band-delete-btn">Delete the $band.getName() from the database.</label>
-       <button type="submit" class="btn btn-danger deletebtn">Delete</button>
-     </div>
-   </form>
- </div>
-</div> -->
+  <input id="delete-band" class="form-control" name="delete-band" type="hidden" value="$band.getId()">
+  <label for="band-delete-btn">Delete the $band.getName() from the database.</label>
+  <button type="submit" class="btn btn-success deletebtn">Delete Band</button>
+</form>
+
+
+<h3><a class="btn btn-info" href='/'>Home Page</a></p>

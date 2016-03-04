@@ -55,17 +55,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/venues/:id", (request,response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      int id = Integer.parseInt(request.params("id"));
-      Venue venue = Venue.find(id);
-      model.put("venue", venue);
-      model.put("allBands", Band.all());
-      model.put("template", "templates/venue.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-
     post("/venues", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
@@ -75,9 +64,17 @@ public class App {
       return null;
     });
 
+    get("/venues/:id", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue venue = Venue.find(id);
+      model.put("venue", venue);
+      model.put("bands", Band.all());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
-
-    post("/add_venues", (request, response) -> {
+    post("/bands/:id/add_venues", (request, response) -> {
       int venueId = Integer.parseInt(request.queryParams("venue_id"));
       int bandId = Integer.parseInt(request.queryParams("band_id"));
       Band band = Band.find(bandId);
@@ -87,13 +84,21 @@ public class App {
       return null;
     });
 
-    post("/add_bands", (request, response) -> {
+    post("/venues/:id/add_bands", (request, response) -> {
       int venueId = Integer.parseInt(request.queryParams("venue_id"));
       int bandId = Integer.parseInt(request.queryParams("band_id"));
       Band band = Band.find(bandId);
       Venue venue = Venue.find(venueId);
       venue.addBand(band);
       response.redirect("/venues/" + venueId);
+      return null;
+    });
+
+
+    post("/bands/deleteband", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.queryParams("delete-band")));
+      band.delete();
+      response.redirect("/bands");
       return null;
     });
   }

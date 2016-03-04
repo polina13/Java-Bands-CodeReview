@@ -13,7 +13,8 @@ venue.vtl
 
 <h4>Add a Band to this venue:</h4>
 
-<form action='/add_bands' method='post'>
+<form action="/venues/$venue.getId()/add_bands" method='post'>
+
     <input id="venue_id" name="venue_id" type="hidden" value="$venue.getId()">
     <label for="band_id">Select a band</label>
     <select id='band_id' name='band_id' type='text'>
@@ -24,6 +25,7 @@ venue.vtl
     <button type='submit'>Add band</button>
 </form>
 
-<p><a href="/venues/$venue.getId()/edit">Edit this venue</a></p>
+
+<!-- <p><a href="/venues/$venue.getId()/edit">Edit this venue</a></p> -->
 
 <p><a class="btn btn-info" href='/'>Home</a></p>
