@@ -2,6 +2,7 @@ import org.junit.*;
 import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Rule;
+import java.util.Arrays;
 
 public class VenueTest {
 
@@ -37,7 +38,7 @@ public class VenueTest {
   }
 
   @Test
-  public void getBands_returnsAllBands_ArrayList() {
+  public void addBand_addsBandToVeue() {
     Band myBand = new Band("Band1");
     myBand.save();
 
@@ -45,8 +46,8 @@ public class VenueTest {
     myVenue.save();
 
     myVenue.addBand(myBand);
-    List savedBands = myVenue.getBands();
-    assertEquals(savedBands.size(), 1);
+    Band savedBand = myVenue.getBands().get(0);
+    assertTrue(myBand.equals(savedBand));
   }
 
   @Test
@@ -60,5 +61,17 @@ public class VenueTest {
     myVenue.addBand(myBand);
     List savedBands = myVenue.getBands();
     assertEquals(savedBands.size(), 1);
+  }
+
+  @Test
+  public void getBands_retrievesALlBandsFromDatabase_BandsList() {
+    Band myBand = new Band("Band1");
+    myBand.save();
+    Venue firstVenue = new Venue("venue1");
+    firstVenue.save();
+    Venue secondVenue = new Venue("venue2");
+    secondVenue.save();
+    Venue[] venues = new Venue[] { firstVenue, secondVenue };
+    assertFalse(myBand.getVenues().containsAll(Arrays.asList(venues)));
   }
 }

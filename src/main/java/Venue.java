@@ -58,7 +58,7 @@ public class Venue {
   public ArrayList<Band> getBands() {
   try(Connection con = DB.sql2o.open()){
     String sql = "SELECT band_id FROM bands_played WHERE venue_id = :venue_id";
-    List<Integer> bandsIds = con.createQuery(sql)
+    List<Integer> bandIds = con.createQuery(sql)
      .addParameter("venue_id", this.getId())
      .executeAndFetch(Integer.class);
 
