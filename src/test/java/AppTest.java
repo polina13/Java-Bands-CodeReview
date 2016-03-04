@@ -65,4 +65,14 @@ public class AppTest extends FluentTest {
     goTo(bandPath);
     assertThat(pageSource()).contains("Band2");
   }
+
+  @Test
+  public void delete_deleteBandsFromDatabase() {
+    Band newBand = new Band("Band1");
+    newBand.save();
+    newBand.delete();
+    String bandPath = String.format("http://localhost:4567/", newBand.getId());
+    goTo(bandPath);
+    assertThat(!(pageSource()).contains("Band1"));
+  }
 }
